@@ -9,11 +9,11 @@ plt.title("Distribution of TIV")
 plt.xlabel("TIV (Trend Indicator Value)")
 plt.ylabel("Frequency")
 
-plt.savefig("../../Visualisation/histogram/outputs/histogram-tiv.png")
+plt.savefig("../../Visualisation/histogram/output/histogram-tiv.png")
 
 sns.kdeplot(data=df, x="Units")
 plt.title("Distribution of Units")
 plt.xlabel("Units")
 plt.ylabel("Frequency")
-plt.savefig("../../Visualisation/histogram/outputs/histogram-units.png")
+plt.savefig("../../Visualisation/histogram/output/histogram-units.png")
 plt.show()
