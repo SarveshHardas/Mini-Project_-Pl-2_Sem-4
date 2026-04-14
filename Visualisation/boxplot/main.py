@@ -1,21 +1,25 @@
-import os
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
+def generate_boxplot():
+    data_path = '../../data/cleaned_data.csv'
+    output_dir = 'output'
+    os.makedirs(output_dir, exist_ok=True)
+    
+    df = pd.read_csv(data_path)
+    sns.set_style("whitegrid")
+    
+    
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(x=df['Units'], color='lightgreen')
+    plt.title('Boxplot of Units Distribution')
+    plt.xlabel('Units')
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(os.path.join(output_dir, 'box_units.png'))
+    plt.close()
 
-data_path = os.path.join(base_dir, "../../data/cleaned_data.csv")
-output_dir = os.path.join(base_dir, "output")
-
-os.makedirs(output_dir, exist_ok=True)
-
-df = pd.read_csv(data_path)
-
-plt.figure()
-sns.boxplot(x=df['TIV_per_unit'])
-plt.title("Boxplot of TIV per Unit")
-plt.xlabel("TIV per Unit")
-
-plt.savefig(os.path.join(output_dir, "boxplot-tiv-per-unit.png"))
-plt.close()
+if __name__ == "__main__":
+    generate_boxplot()
